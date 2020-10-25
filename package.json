@@ -1,0 +1,29 @@
+{
+  "name": "object-fly-simulator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "compileOnce": "browserify src/js/app.js -o src/app.js -t [ babelify ]",
+    "compile": "watchify src/js/app.js -o src/app.js -t [ babelify ]",
+    "startServerOnce": "node server.js",
+    "startServer": "nodemon server.js",
+    "start": "npm run compileOnce && npm run startServerOnce",
+    "lint:js": "eslint --ext .js ./src/js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-eslint": "^10.1.0",
+    "babelify": "^10.0.0",
+    "browserify": "^17.0.0",
+    "eslint": "^7.12.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6",
+    "watchify": "^3.11.1"
+  }
+}
