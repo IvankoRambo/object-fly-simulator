@@ -1,9 +1,8 @@
 import Element from './Element';
 
+import { getFromStore } from '../store';
 import { calculate } from '../helpers/math';
 import { checkCollision } from '../helpers/mediator';
-
-let n = 0;
 
 class FlyObject extends Element {
     constructor(topArg, leftArg) {
@@ -21,7 +20,7 @@ class FlyObject extends Element {
     }
 
     flyStep(angle, Vo) {
-        this.t += 0.1;
+        this.t += 0.01;
         const formulaArgs = {
             left: this.left,
             top: this.top,
@@ -36,9 +35,10 @@ class FlyObject extends Element {
         this.element.style.left = `${this.left}px`;
         this.element.style.top = `${this.top}px`;
 
-        n++;
-        if (n === 20) {
-            this.animationEnd = true;
+        const ground = getFromStore('ground');
+        if (ground) {
+            const collisionData = checkCollision(this, ground);
+            this.animationEnd = collisionData.collision;
         }
     }
 

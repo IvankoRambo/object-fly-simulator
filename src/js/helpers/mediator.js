@@ -13,13 +13,11 @@ const collisions = {
             const collisionX = Math.max(source.left, aim.left);
             const width = Math.min(source.left + source.element.offsetWidth, aim.left + aim.element.offsetWidth) - collisionX;
 
-            collisionData = {
-                collision: true,
-                collisionX,
-                collisionY,
-                width,
-                height
-            };
+            collisionData.collision = true;
+            collisionData.collisionX = collisionX;
+            collisionData.collisionY = collisionY;
+            collisionData.width = width;
+            collisionData.height = height;
         }
 
         return collisionData;

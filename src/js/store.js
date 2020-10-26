@@ -8,7 +8,7 @@ const CONSTS = {
 };
 
 const initialValues = {
-    frameSpeed: 20,
+    frameSpeed: 6,
     frameSpeedCoefficient: 1,
     top: 400,
     left: 15
