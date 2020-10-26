@@ -1,11 +1,15 @@
+import Element from './Element';
+
 import { calculate } from '../helpers/math';
+import { checkCollision } from '../helpers/mediator';
 
 let n = 0;
 
-class FlyObject {
+class FlyObject extends Element {
     constructor(topArg, leftArg) {
-        const top = topArg || window.app.top;
-        const left = leftArg || window.app.left;
+        super();
+        const top = topArg != null ? topArg : window.app.top;
+        const left = leftArg != null ? leftArg : window.app.left;
         this.top = top;
         this.left = left;
         this.width = 80;
@@ -16,27 +20,21 @@ class FlyObject {
         this.t = 0;
     }
 
-    createElement() {
-        const element = document.createElement('div');
-        document.body.appendChild(element);
-        element.style.position = 'absolute';
-        element.style.top = this.top;
-        element.style.left = this.left;
-        element.style.width = this.width;
-        element.style.height = this.height;
-        element.style.backgroundColor = this.background;
-
-        return element;
-    }
-
     flyStep(angle, Vo) {
         this.t += 0.1;
+        const formulaArgs = {
+            left: this.left,
+            top: this.top,
+            Vo,
+            angle,
+            t: this.t
+        };
 
-        const offset = calculate(this.left, this.top, Vo, angle, this.t);
+        const offset = calculate(formulaArgs);
         this.left = offset.x;
         this.top = offset.y;
-        this.element.style.left = this.left;
-        this.element.style.top = this.top;
+        this.element.style.left = `${this.left}px`;
+        this.element.style.top = `${this.top}px`;
 
         n++;
         if (n === 20) {
@@ -45,8 +43,8 @@ class FlyObject {
     }
 
     invokeAnimation(angleArg, VoArg) {
-        const angle = angleArg || window.app.angle;
-        const Vo = VoArg || window.app.VoArg;
+        const angle = angleArg != null ? angleArg : window.app.angle;
+        const Vo = VoArg != null ? VoArg : window.app.VoArg;
 
         const animation = setInterval(() => {
             this.flyStep(angle, Vo);

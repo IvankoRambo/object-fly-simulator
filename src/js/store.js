@@ -1,5 +1,10 @@
 const CONSTS = {
-    g: 9.8
+    g: 9.8,
+    minTopLimit: 0,
+    maxTopLimit: 800,
+    maxLeftLimit: 10e+3,
+    minLeftLimit: 0,
+    groundHeight: 10
 };
 
 const initialValues = {

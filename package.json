@@ -9,7 +9,7 @@
     "startServerOnce": "node server.js",
     "startServer": "nodemon server.js",
     "start": "npm run compileOnce && npm run startServerOnce",
-    "lint:js": "eslint --ext .js ./src/js",
+    "lint:js": "eslint --ext .js .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
