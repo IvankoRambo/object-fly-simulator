@@ -7,17 +7,11 @@ class Ground extends Element {
         this.top = window.app.CONSTS.maxTopLimit;
         this.width = window.app.CONSTS.maxLeftLimit - window.app.CONSTS.minLeftLimit;
         this.height = window.app.CONSTS.groundHeight;
-        this.element = this.createElement();
+        this.element = this.createElement(true);
     }
 
-    createElement() {
-        const element = document.createElement('div');
-        document.body.appendChild(element);
-        element.style.position = 'absolute';
-        element.style.top = `${this.top}px`;
-        element.style.left = `${this.left}px`;
-        element.style.width = `${this.width}px`;
-        element.style.height = `${this.height}px`;
+    createElement(appendToBody) {
+        const element = super.createElement(appendToBody);
         element.style.backgroundColor = this.background;
 
         return element;

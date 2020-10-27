@@ -8,15 +8,18 @@ class Element {
         this.elementType = 'box';
     }
 
-    createElement() {
+    createElement(appendToBody) {
         const element = document.createElement('div');
-        document.body.appendChild(element);
         element.style.position = 'absolute';
         element.style.top = `${this.top}px`;
         element.style.left = `${this.left}px`;
         element.style.width = `${this.width}px`;
         element.style.height = `${this.height}px`;
         element.style.backgroundColor = this.background;
+
+        if (appendToBody) {
+            document.body.appendChild(element);
+        }
 
         return element;
     }

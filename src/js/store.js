@@ -4,14 +4,15 @@ const CONSTS = {
     maxTopLimit: 800,
     maxLeftLimit: 10e+3,
     minLeftLimit: 0,
-    groundHeight: 10
+    groundHeight: 10,
+    frameSpeed: 6,
+    metersPerPixel: 3
 };
 
 const initialValues = {
-    frameSpeed: 6,
     frameSpeedCoefficient: 1,
     top: 400,
-    left: 15
+    left: 300
 };
 
 export const initStore = () => {

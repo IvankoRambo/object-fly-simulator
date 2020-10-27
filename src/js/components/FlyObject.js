@@ -1,4 +1,5 @@
 import Element from './Element';
+import Circle from './Circle';
 
 import { getFromStore } from '../store';
 import { calculate } from '../helpers/math';
@@ -14,16 +15,32 @@ class FlyObject extends Element {
         this.width = 80;
         this.height = this.width;
         this.background = 'red';
-        this.element = this.createElement();
+        this.element = this.createElement(true);
         this.animationEnd = false;
         this.t = 0;
+
+        this.createPointerCircle();
+    }
+
+    createPointerCircle() {
+        this.pointerCircle = new Circle();
+        this.pointerCircle.width = 10;
+        this.pointerCircle.height = 10;
+        this.pointerCircle.element = this.pointerCircle.createElement();
+        this.pointerCircle.element.style.top = `calc(50% - ${this.pointerCircle.height / 2}px)`;
+        this.pointerCircle.element.style.left = `calc(50% - ${this.pointerCircle.width / 2}px)`;
+
+        const relativeMiddleElement = document.createElement('div');
+        relativeMiddleElement.style.position = 'relative';
+        relativeMiddleElement.style.width = `${this.width}px`;
+        relativeMiddleElement.style.height = `${this.height}px`;
+        relativeMiddleElement.appendChild(this.pointerCircle.element);
+        this.element.appendChild(relativeMiddleElement);
     }
 
     flyStep(angle, Vo) {
-        this.t += 0.01;
+        this.t += 0.1;
         const formulaArgs = {
-            left: this.left,
-            top: this.top,
             Vo,
             angle,
             t: this.t
@@ -51,7 +68,7 @@ class FlyObject extends Element {
             if (this.animationEnd) {
                 clearInterval(animation);
             }
-        }, window.app.frameSpeed);
+        }, window.app.CONSTS.frameSpeed);
     }
 }
 
