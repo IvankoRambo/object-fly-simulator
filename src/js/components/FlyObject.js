@@ -14,6 +14,7 @@ class FlyObject extends Element {
         const left = leftArg != null ? leftArg : window.app.left;
         this.top = top;
         this.left = left;
+        this.l = 0;
         this.width = 80;
         this.height = this.width;
         this.background = 'red';
@@ -70,6 +71,13 @@ class FlyObject extends Element {
         this.top = offset.y;
         this.element.style.left = `${this.left}px`;
         this.element.style.top = `${this.top}px`;
+
+        this.l = Math.abs(this.left - window.app.left);
+
+        const infoBar = getFromStore('infobar');
+        if (infoBar) {
+            infoBar.setMeasureLength(this.l);
+        }
 
         const ground = getFromStore('ground');
         if (ground) {

@@ -44,3 +44,7 @@ html,
 .error-message {
     color: red;
 }
+
+.b-info-bar-info-placeholder--length {
+    font-weight: 700;
+}

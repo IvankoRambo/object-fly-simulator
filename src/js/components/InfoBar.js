@@ -22,7 +22,9 @@ class InfoBar {
             heightError: document.querySelector('.b-info-bar-settings-panel.height .error-message'),
             simulationSpeedError: document.querySelector('.b-info-bar-settings-panel.simulationSpeed .error-message'),
             startAnimationButton: document.querySelector('.b-info-bar-settings-panel.fire .submit'),
-            startAnimationError: document.querySelector('.b-info-bar-settings-panel.fire .error-message')
+            startAnimationError: document.querySelector('.b-info-bar-settings-panel.fire .error-message'),
+            measurePlaceholder: document.querySelector('.b-info-bar-info-placeholder--measure'),
+            measureLength: document.querySelector('.b-info-bar-info-placeholder--length')
         };
 
         this.settingsButtonPress = this.settingsButtonPress.bind(this);
@@ -34,6 +36,7 @@ class InfoBar {
         this.fillInfoline('simulationSpeed');
 
         this.setSimulationSpeeds();
+        this.setMeasurePlaceholder();
 
         this.initEvents();
     }
@@ -186,6 +189,20 @@ class InfoBar {
             this.cache.startAnimationError.appendChild(document.createTextNode(errored));
         } else if (flyObject) {
             flyObject.invokeAnimation(calculate({ degrees: deg }, 'fromDegreesToRad'), speed);
+        }
+    }
+
+    setMeasurePlaceholder() {
+        this.cache.measurePlaceholder.appendChild(document.createTextNode('1px = 1 meter'));
+    }
+
+    setMeasureLength(l) {
+        if (l) {
+            while (this.cache.measureLength.firstChild) {
+                this.cache.measureLength.removeChild(this.cache.measureLength.firstChild);
+            }
+
+            this.cache.measureLength.appendChild(document.createTextNode(`L = ${Math.round(l)} meters`));
         }
     }
 

@@ -6,7 +6,6 @@ const CONSTS = {
     minLeftLimit: -10e+3,
     groundHeight: 10,
     frameSpeed: 6,
-    metersPerPixel: 3,
     speedPerPixel: 0.23,
     pointerCircleDiameter: 10,
     globalWrapper: '.wrapper',

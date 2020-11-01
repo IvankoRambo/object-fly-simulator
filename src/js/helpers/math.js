@@ -8,7 +8,7 @@ const formulas = {
             t
         } = formulaArgs;
 
-        const x = x0 + Vo * t * Math.cos(angle) * window.app.CONSTS.metersPerPixel;
+        const x = x0 + Vo * t * Math.cos(angle);
         const y = y0 - Vo * t * Math.sin(angle) + (window.app.CONSTS.g * t * t) / 2;
         return {
             x,
