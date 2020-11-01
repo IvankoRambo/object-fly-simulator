@@ -11,3 +11,36 @@ html,
 .wrapper {
     position: relative;
 }
+
+.b-info-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.b-info-bar-settings,
+.b-info-bar-info {
+    display: inline-block;
+}
+
+.infoline,
+.label,
+.text,
+.submit,
+.error-message {
+    display: block;
+}
+
+.text {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.b-info-bar-settings-panel {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.error-message {
+    color: red;
+}

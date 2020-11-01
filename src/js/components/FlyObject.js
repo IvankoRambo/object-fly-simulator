@@ -58,6 +58,8 @@ class FlyObject extends Element {
     flyStep(angle, Vo) {
         this.t += 0.1;
         const formulaArgs = {
+            x0: window.app.left,
+            y0: window.app.top,
             Vo,
             angle,
             t: this.t
@@ -86,7 +88,18 @@ class FlyObject extends Element {
             if (this.animationStatus === 'finished') {
                 clearInterval(animation);
             }
-        }, window.app.CONSTS.frameSpeed);
+        }, window.app.CONSTS.frameSpeed / window.app.frameSpeedCoefficient);
+    }
+
+    setElementTop(topArg) {
+        const top = topArg || 0;
+        if (this.element) {
+            this.element.style.top = `${top}px`;
+            this.top = top;
+
+            this.pointerCircle.getAbsoluteElementPosition();
+            this.pointerCircle.defineCircleParams();
+        }
     }
 
     pointerCircleMouseDownEvent(evt) {
@@ -130,6 +143,12 @@ class FlyObject extends Element {
                 y: this.pointerCircle.topCenter
             };
             this.fireVector.drawLine(moveTo, lineTo, window.app.CONSTS.pointerCircleDiameter / 2);
+
+            const infoBar = getFromStore('infobar');
+            if (infoBar) {
+                infoBar.fillInfoline('degrees');
+                infoBar.fillInfoline('speed');
+            }
         }
     }
 
@@ -154,6 +173,11 @@ class FlyObject extends Element {
 
                 this.pointerCircle.getAbsoluteElementPosition();
                 this.pointerCircle.defineCircleParams();
+
+                const infoBar = getFromStore('infobar');
+                if (infoBar) {
+                    infoBar.fillInfoline('height');
+                }
             }
         }
     }

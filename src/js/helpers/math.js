@@ -1,13 +1,15 @@
 const formulas = {
     looselyThrownBody: formulaArgs => {
         const {
+            x0,
+            y0,
             Vo,
             angle,
             t
         } = formulaArgs;
 
-        const x = window.app.left + Vo * t * Math.cos(angle) * window.app.CONSTS.metersPerPixel;
-        const y = window.app.top - Vo * t * Math.sin(angle) + (window.app.CONSTS.g * t * t) / 2;
+        const x = x0 + Vo * t * Math.cos(angle) * window.app.CONSTS.metersPerPixel;
+        const y = y0 - Vo * t * Math.sin(angle) + (window.app.CONSTS.g * t * t) / 2;
         return {
             x,
             y

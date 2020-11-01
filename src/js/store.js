@@ -10,7 +10,8 @@ const CONSTS = {
     speedPerPixel: 0.23,
     pointerCircleDiameter: 10,
     globalWrapper: '.wrapper',
-    pointerCircleCls: 'pointerCircle'
+    pointerCircleCls: 'pointerCircle',
+    frameSpeedCoefficientLength: 3
 };
 
 const initialValues = {

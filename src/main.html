@@ -4,7 +4,50 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <body>
-        <div class="wrapper"></div>
+        <div class="wrapper">
+            <div class="b-info-bar">
+                <div class="b-info-bar-settings">
+                    <div class="b-info-bar-settings-panel degrees">
+                        <div class="infoline"></div>
+                        <label for="degrees">Degrees</label>
+                        <input type="text" class="text" id="degrees" />
+                        <input type="submit" class="submit" value="Set degrees" />
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="b-info-bar-settings-panel speed">
+                        <div class="infoline"></div>
+                        <label class="label" for="speed">Speed</label>
+                        <input type="text" class="text" id="speed" />
+                        <input type="submit" class="submit" value="Set speed" />
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="b-info-bar-settings-panel height">
+                        <div class="infoline"></div>
+                        <label for="height">Height</label>
+                        <input type="text" class="text" id="height" />
+                        <input type="submit" class="submit" value="Set height" />
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="b-info-bar-settings-panel simulationSpeed">
+                        <div class="infoline"></div>
+                        <label for="simulationSpeed">Simulation speed</label>
+                        <select class="text" id="simulationSpeed"></select>
+                        <input type="submit" class="submit" value="Set simulation speed" />
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="b-info-bar-settings-panel fire">
+                        <input type="submit" class="submit fire" value="Start animation" />
+                        <div class="error-message"></div>
+                    </div>
+                </div>
+                <div class="b-info-bar-info">
+                    <div class="b-info-bar-info-placeholder b-info-bar-info-placeholder--measure">
+                    </div>
+                    <div class="b-info-bar-info-placeholder b-info-bar-info-placeholder--length">
+                    </div>
+                </div>
+            </div>
+        </div>
         <script type="application/javascript" src="app.js"></script>
     </body>
 </html>
