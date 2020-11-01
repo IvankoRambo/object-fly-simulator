@@ -1,20 +1,24 @@
 const CONSTS = {
     g: 9.8,
-    minTopLimit: 0,
+    minTopLimit: 100,
     maxTopLimit: 800,
     maxLeftLimit: 10e+3,
-    minLeftLimit: 0,
+    minLeftLimit: -10e+3,
     groundHeight: 10,
     frameSpeed: 6,
     metersPerPixel: 3,
+    speedPerPixel: 0.23,
     pointerCircleDiameter: 10,
-    globalWrapper: '.wrapper'
+    globalWrapper: '.wrapper',
+    pointerCircleCls: 'pointerCircle'
 };
 
 const initialValues = {
     frameSpeedCoefficient: 1,
     top: 400,
-    left: 300
+    left: 300,
+    fireDegree: null,
+    fireSpeed: null
 };
 
 export const initStore = () => {
