@@ -6,7 +6,9 @@ const CONSTS = {
     minLeftLimit: 0,
     groundHeight: 10,
     frameSpeed: 6,
-    metersPerPixel: 3
+    metersPerPixel: 3,
+    pointerCircleDiameter: 10,
+    globalWrapper: '.wrapper'
 };
 
 const initialValues = {

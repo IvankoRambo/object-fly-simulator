@@ -18,10 +18,45 @@ class Element {
         element.style.backgroundColor = this.background;
 
         if (appendToBody) {
-            document.body.appendChild(element);
+            const wrapper = document.querySelector(window.app.CONSTS.globalWrapper);
+            wrapper.appendChild(element);
         }
 
         return element;
+    }
+
+    removeElement() {
+        if (this.element) {
+            const node = this.element;
+            if (node.parentNode) {
+                node.parentNode.removeChild(node);
+            }
+        }
+    }
+
+    rotateElement(deg) {
+        if (this.element) {
+            this.element.style.transform = `rotate(${deg}deg)`;
+            this.element.style['-webkit-transform'] = `rotate(${deg}deg)`;
+            this.element.style['-moz-transform'] = `rotate(${deg}deg)`;
+            this.element.style['transform-origin'] = `rotate(${deg}deg)`;
+        }
+    }
+
+    getAbsoluteElementPosition() {
+        if (this.element) {
+            let element = this.element;
+            let top = 0;
+            let left = 0;
+            do {
+                top += element.offsetTop || 0;
+                left += element.offsetLeft || 0;
+                element = element.parentElement;
+            } while (element);
+
+            this.top = top;
+            this.left = left;
+        }
     }
 }
 

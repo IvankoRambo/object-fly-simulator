@@ -10,7 +10,7 @@ export const createGroundObject = () => {
 export const createFlyObject = () => {
     const flyObject = new FlyObject();
     setToStore('flyObject', flyObject);
-    // flyObject.invokeAnimation(Math.PI / 3, 40);
+    // flyObject.invokeAnimation(2.35, 50);
 };
 
 export const startSimulation = () => {

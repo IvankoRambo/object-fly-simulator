@@ -17,6 +17,11 @@ const formulas = {
     fromDegreesToRad: formulaArgs => {
         const { degrees } = formulaArgs;
         return (degrees * Math.PI) / 180;
+    },
+
+    fromRadToDegress: formulaArgs => {
+        const { rad } = formulaArgs;
+        return (180 * rad) / Math.PI;
     }
 
 };
