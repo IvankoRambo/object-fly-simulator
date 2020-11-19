@@ -10,4 +10,9 @@ Dev Challenge XVII (2020) Online Round task
 ### Few tips on how to use interface
 There are two approaches to throw a flying object (red div element with black circle in the center):
 1. Define parameters in the informational bar in the upper part of a page and press "Start animation button".
+
+![Defining params via info bar](https://github.com/IvankoRambo/object-fly-simulator/blob/main/src/img/object-fly-simulator-1.gif?raw=true)
+
 2. Drag flying object from top to botton to define height of fly start and press on black circle and drag to define an angle and start speed of object (object will start to fly when you leave keeping mouse to be clamped).
+
+![Drag flying object by mouse](https://github.com/IvankoRambo/object-fly-simulator/blob/main/src/img/object-fly-simulator-2.gif?raw=true)
