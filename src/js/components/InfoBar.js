@@ -3,6 +3,13 @@ import { setToStore, getFromStore } from '../store';
 import { calculate } from '../helpers/math';
 
 class InfoBar {
+    /**
+     * Class that represents information bar
+     * Here it is available:
+     * - define object fly animation params by typing params in inputs of bar
+     * - see the results of length of object fly
+     * @constructor
+     */
     constructor() {
         this.cache = {
             degreesInfoLine: document.querySelector('.b-info-bar-settings-panel.degrees .infoline'),
@@ -41,6 +48,11 @@ class InfoBar {
         this.initEvents();
     }
 
+    /**
+     * Fills info after submit of object fly params
+     * @param {string} typeArg - type of parameter
+     * @returns {void}
+     */
     fillInfoline(typeArg) {
         const type = typeArg || 'degrees';
         let element;
@@ -86,6 +98,10 @@ class InfoBar {
         }
     }
 
+    /**
+     * Fills selector of simulation speed with all possible variants
+     * @returns {void}
+     */
     setSimulationSpeeds() {
         if (window.app.CONSTS.frameSpeedCoefficientLength) {
             for (let i = 1; i <= window.app.CONSTS.frameSpeedCoefficientLength; i += 1) {
@@ -100,6 +116,11 @@ class InfoBar {
         }
     }
 
+    /**
+     * Process and sets submitted flying params
+     * @param {string} typeArg - type of parameter
+     * @returns {void}
+     */
     settingsButtonPress(typeArg) {
         const type = typeArg || 'degrees';
         let input;
@@ -162,6 +183,11 @@ class InfoBar {
         }
     }
 
+    /**
+     * Starts animation from info bar if all params are fine
+     * @param {Object} evt - event object
+     * @returns {void}
+     */
     startAnimationButtonPress(evt) {
         evt.preventDefault();
         const flyObject = getFromStore('flyObject');
@@ -196,6 +222,11 @@ class InfoBar {
         this.cache.measurePlaceholder.appendChild(document.createTextNode('1px = 1 meter'));
     }
 
+    /**
+     * Displays current length of object flying
+     * @param {number} l - length in pixels
+     * @returns {void}
+     */
     setMeasureLength(l) {
         if (l) {
             while (this.cache.measureLength.firstChild) {
@@ -206,6 +237,10 @@ class InfoBar {
         }
     }
 
+    /**
+     * Initialize events for informational bar action elements
+     * @returns {void}
+     */
     initEvents() {
         this.cache.degreesButton.addEventListener('click', evt => {
             evt.preventDefault();

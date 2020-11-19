@@ -1,6 +1,10 @@
 import Element from './Element';
 
 class Canvas extends Element {
+    /**
+     * Class to represent Canvas elements (has interface for line drawing)
+     * @constructor
+     */
     constructor() {
         super();
         this.elementType = 'canvas';
@@ -13,6 +17,11 @@ class Canvas extends Element {
         this.initEvents();
     }
 
+    /**
+     * Method to create <canvas> tag
+     * @param {boolean} appendToBody - whether to append to wrapper element or not
+     * @returns {HTMLElement} <canvas> tag
+     */
     createElement(appendToBody) {
         const element = document.createElement('CANVAS');
         element.style.position = 'absolute';
@@ -31,6 +40,13 @@ class Canvas extends Element {
         return element;
     }
 
+    /**
+     * Method to manage draw line interfaces
+     * @param {Object} moveTo - object with x and y coordinates of the line beginning
+     * @param {Object} lineTo - object with x and y coordinates of the line ending
+     * @param {number} strokeWidth - the width of the line to set
+     * @returns {void}
+     */
     drawLine(moveTo, lineTo, strokeWidth) {
         if (this.element) {
             const ctx = this.element.getContext('2d');
@@ -51,6 +67,10 @@ class Canvas extends Element {
         }
     }
 
+    /**
+     * Method to be fired in case of screen size change to chagne canvas dimensions
+     * @returns {void}
+     */
     resizeCanvas() {
         if (this.element) {
             this.element.width = window.innerWidth;
@@ -64,6 +84,10 @@ class Canvas extends Element {
         }
     }
 
+    /**
+     * Method for events storing
+     * @returns {void}
+     */
     initEvents() {
         window.addEventListener('resize', this.resizeCanvas, false);
     }

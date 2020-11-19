@@ -1,6 +1,10 @@
 import Element from './Element';
 
 class Circle extends Element {
+    /**
+     * Basic class that represents HTML DOM div with circle styles (extends from Element)
+     * @constructor
+     */
     constructor() {
         super();
         this.elementType = 'circle';
@@ -13,6 +17,10 @@ class Circle extends Element {
         return element;
     }
 
+    /**
+     * Defines circle radius and central point coordinates
+     * @returns {void}
+     */
     defineCircleParams() {
         this.radius = this.height / 2;
         this.leftCenter = this.left + this.width / 2;

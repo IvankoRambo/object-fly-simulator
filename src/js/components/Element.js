@@ -1,4 +1,8 @@
 class Element {
+    /**
+     * Basic class that represents HTML DOM rectangular div
+     * @constructor
+     */
     constructor() {
         this.left = 0;
         this.top = 0;
@@ -8,6 +12,11 @@ class Element {
         this.elementType = 'box';
     }
 
+    /**
+     * Create a div element
+     * @param {boolean} appendToBody - whether to append to wrapper element or not
+     * @returns {HTMLElement} div rectangular element
+     */
     createElement(appendToBody) {
         const element = document.createElement('div');
         element.style.position = 'absolute';
@@ -25,6 +34,10 @@ class Element {
         return element;
     }
 
+    /**
+     * Removes div elements and erases from memory
+     * @returns {void}
+     */
     removeElement() {
         if (this.element) {
             const node = this.element;
@@ -34,6 +47,11 @@ class Element {
         }
     }
 
+    /**
+     * Rotates element
+     * @param {number} deg the engle in degrees to rotate
+     * @returns {void}
+     */
     rotateElement(deg) {
         if (this.element) {
             this.element.style.transform = `rotate(${deg}deg)`;
@@ -43,6 +61,10 @@ class Element {
         }
     }
 
+    /**
+     * Defines element position on scree (including child absolute elements)
+     * @returns {void}
+     */
     getAbsoluteElementPosition() {
         if (this.element) {
             let element = this.element;

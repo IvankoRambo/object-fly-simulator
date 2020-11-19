@@ -1,10 +1,22 @@
 import { getFromStore } from '../store';
 
+/**
+ * Helper function to calculate max allowed lower starter position of flying element
+ * @param {HTMLElement} element - flying object
+ * @returns {number} lower position (counter from 0 top of page)
+ */
 export const calculateMaxTopPosition = element => {
     const offsetHeight = element ? element.offsetHeight : 0;
     return window.app.CONSTS.maxTopLimit - offsetHeight;
 };
 
+/**
+ * Helper function to validate user's parameters (angle, Vo, height) submissions
+ * Check allowed limits, emptiness e t c
+ * @param {HTMLElement} input - input to take the value from
+ * @param {string} typeArg - type of submission to identify what parameter is submitted
+ * @returns {boolean|string} false status of error (no error) or error message
+ */
 export const defineParamsSettingsError = (input, typeArg) => {
     const type = typeArg || 'degrees';
     const flyObject = getFromStore('flyObject');
@@ -43,4 +55,36 @@ export const defineParamsSettingsError = (input, typeArg) => {
     }
 
     return errored;
+};
+
+/**
+ * Make initial scroll position
+ * @param {HTMLElement} elementArg - element to set scroll by
+ * @returns {void}
+ */
+export const setInitialScrollBar = elementArg => {
+    const element = elementArg || window;
+    element.scrollTo(0, 0);
+};
+
+/**
+ * Tracks elements position and moves scroll by X if needed
+ * @param {number} currentLeft - current element X position
+ * @param {number} previousLeft - previous element X position
+ * @param {number} scrollXArg - page X offset
+ * @param {HTMLElement} elementArg - element to set scroll by
+ * @returns {number} new scroll X position
+ */
+export const trackElementFly = (currentLeft, previousLeft, scrollXArg, elementArg) => {
+    let scrollX = scrollXArg != null ? scrollXArg : 0;
+    const element = elementArg || window;
+    const scrollExtra = window.app.CONSTS.scrollExtra;
+
+    if (currentLeft > window.innerWidth - scrollExtra) {
+        scrollX += currentLeft - previousLeft;
+    }
+
+    element.scrollTo(scrollX, 0);
+
+    return scrollX;
 };

@@ -1,4 +1,10 @@
 const collisions = {
+    /**
+     * Type of collision for simple HTML elements (rectangle divs)
+     * @param {HTMLElement} source - source element to find with what elements it could collide
+     * @param {HTMLElement} aim - HTML element to find potential collision with
+     * @returns {Object} object with status of collision and coordinates
+     */
     boxToBox: (source, aim) => {
         const collisionData = {
             collision: false
@@ -24,6 +30,12 @@ const collisions = {
     }
 };
 
+/**
+ * Defines collision coordinates of HTML objects based on type of object (rect, circle e t c)
+ * @param {HTMLElement} source - source element to find with what elements it could collide
+ * @param {Array<HTMLElement>} aimsArg - array of HTML elements to find potential collision with (ground or obstacles)
+ * @returns {Object} object with status of collision and coordinates
+ */
 export const checkCollision = (source, aimsArg) => {
     let aims = aimsArg;
     if (!Array.isArray(aims)) {
