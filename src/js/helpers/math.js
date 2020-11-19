@@ -3,7 +3,7 @@ const formulas = {
     /**
      * Calculates coordinates for thrown body
      * @param {Object} formulaArgs - contains needed params as time, initial coordinates e t c
-     * @returns {number} result of formula
+     * @returns {Object} object with x and y coordinates as result of formula
      */
     looselyThrownBody: formulaArgs => {
         const {
