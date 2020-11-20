@@ -9,7 +9,7 @@ Dev Challenge XVII (2020) Online Round task
 
 ### Few tips on how to use interface
 There are two approaches to throw a flying object (red div element with black circle in the center):
-1. Define parameters in the informational bar in the upper part of a page and press "Start animation button".
+1. Define parameters in the informational bar in the upper part of a page and press "Start animation" button.
 
 ![Defining params via info bar](https://github.com/IvankoRambo/object-fly-simulator/blob/main/src/img/object-fly-simulator-1.gif?raw=true)
 
